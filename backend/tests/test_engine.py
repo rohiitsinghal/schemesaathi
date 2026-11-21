@@ -182,3 +182,28 @@ def test_cash_schemes_rank_above_insurance():
     res = engine.match({"occupation": "farmer", "land_acres": 2, "income_tax_payer": False, "age": 30, "has_bank_account": True})
     order = [s["id"] for s in res["schemes"]]
     assert order.index("pm-kisan") < order.index("pmjjby")
+
+
+def test_new_state_schemes_match_only_their_state():
+    mp = engine.match({"age": 35, "gender": "female", "state": "madhya pradesh", "annual_income": 180000, "income_tax_payer": False})
+    assert "ladli-behna" in ids(mp, engine.ELIGIBLE)
+    assert "lado-lakshmi" not in {s["id"] for s in mp["schemes"]}  # Haryana scheme must not leak into MP
+    hr = engine.match({"age": 35, "gender": "female", "state": "haryana", "annual_income": 150000, "income_tax_payer": False},
+                      include_not_eligible=True)
+    ll = next(s for s in hr["schemes"] if s["id"] == "lado-lakshmi")
+    assert ll["status"] in (engine.NEAR_MISS, engine.NOT_ELIGIBLE)  # income above the ₹1 lakh limit
+
+
+def test_vay_vandana_and_jsy():
+    senior = engine.match({"age": 72, "gender": "male", "state": "punjab", "annual_income": 400000})
+    assert "ayushman-vay-vandana" in ids(senior, engine.ELIGIBLE)
+    mum = engine.match({"age": 26, "gender": "female", "pregnant": True, "bpl": True})
+    assert "jsy" in ids(mum, engine.ELIGIBLE)
+    mum_general = engine.match({"age": 26, "gender": "female", "pregnant": True, "bpl": False, "category": "general"})
+    assert "jsy" not in ids(mum_general, engine.ELIGIBLE, engine.LIKELY)
+
+
+def test_every_state_scheme_is_flagged_for_verification():
+    for s in engine.load_schemes():
+        if s["level"] == "state":
+            assert s["state"] and s["needs_state_verification"] is True, s["id"]

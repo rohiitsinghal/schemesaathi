@@ -1291,6 +1291,1282 @@
       "deadline": "Check state portal for current status",
       "verified_on": null,
       "needs_state_verification": true
+    },
+    {
+      "id": "ayushman-vay-vandana",
+      "scope": "household",
+      "category": "health",
+      "level": "central",
+      "name": "Ayushman Vay Vandana (health cover for 70+)",
+      "name_hi": "आयुष्मान वय वंदना (70+ के लिए स्वास्थ्य बीमा)",
+      "benefit": "₹5 lakh per year cashless hospital cover for every senior citizen aged 70+, whatever the income",
+      "benefit_hi": "70 वर्ष या उससे अधिक उम्र के हर बुज़ुर्ग को आय की परवाह किए बिना हर साल ₹5 लाख तक का कैशलेस इलाज",
+      "value_type": "cover",
+      "frequency": "yearly",
+      "amount": 500000,
+      "value_note": "Cover is shared by the 70+ members of a family; it is separate from the regular Ayushman card.",
+      "rules": [
+        {
+          "f": "age",
+          "op": "gte",
+          "v": 70,
+          "label": "Age 70 or above"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "Mobile number linked to Aadhaar",
+        "Passport-size photo (if asked)"
+      ],
+      "steps": [
+        "Visit pmjay.gov.in or download the Ayushman App and choose 'Vay Vandana card'",
+        "Verify with Aadhaar OTP (e-KYC) and submit the form",
+        "Download the card, or collect it at a CSC / empanelled hospital, and show it at admission"
+      ],
+      "apply_url": "https://pmjay.gov.in",
+      "deadline": "Open all year",
+      "verified_on": null
+    },
+    {
+      "id": "pmjdy",
+      "scope": "individual",
+      "category": "finance",
+      "level": "central",
+      "name": "PM Jan Dhan Yojana (zero-balance bank account)",
+      "name_hi": "पीएम जन धन योजना (ज़ीरो बैलेंस बैंक खाता)",
+      "benefit": "Zero-balance bank account with a RuPay card, ₹2 lakh accident cover and an overdraft facility",
+      "benefit_hi": "ज़ीरो बैलेंस बैंक खाता, रुपे कार्ड, ₹2 लाख दुर्घटना बीमा और ओवरड्राफ्ट सुविधा",
+      "value_type": "cover",
+      "frequency": "yearly",
+      "amount": 200000,
+      "rules": [
+        {
+          "f": "has_bank_account",
+          "op": "is_false",
+          "label": "You do not yet have a bank account"
+        },
+        {
+          "f": "age",
+          "op": "gte",
+          "v": 10,
+          "label": "Age 10 or above"
+        }
+      ],
+      "documents": [
+        "Aadhaar card (or another officially valid ID)",
+        "Passport-size photo",
+        "Mobile number"
+      ],
+      "steps": [
+        "Visit any bank branch or Bank Mitra (business correspondent) near you",
+        "Ask for a PM Jan Dhan account and fill the one-page form",
+        "Collect the RuPay card and link Aadhaar and mobile for DBT benefits"
+      ],
+      "apply_url": "https://pmjdy.gov.in",
+      "deadline": "Open all year",
+      "verified_on": null
+    },
+    {
+      "id": "pm-surya-ghar",
+      "scope": "household",
+      "category": "housing",
+      "level": "central",
+      "name": "PM Surya Ghar Muft Bijli Yojana (rooftop solar)",
+      "name_hi": "पीएम सूर्य घर मुफ़्त बिजली योजना (छत पर सोलर)",
+      "benefit": "Subsidy of up to ₹78,000 to install rooftop solar, and up to 300 free units of electricity a month",
+      "benefit_hi": "छत पर सोलर लगाने पर ₹78,000 तक की सब्सिडी और हर महीने लगभग 300 यूनिट तक मुफ़्त बिजली",
+      "value_type": "in_kind",
+      "frequency": "one_time",
+      "amount": 78000,
+      "value_note": "Subsidy: ₹30,000/kW up to 2 kW, ₹18,000 for the 3rd kW, capped at ₹78,000. You pay for the system first.",
+      "rules": [
+        {
+          "f": "owns_pucca_house",
+          "op": "is_true",
+          "label": "Your family owns a house with a suitable rooftop"
+        }
+      ],
+      "documents": [
+        "Latest electricity bill",
+        "Aadhaar card",
+        "Bank passbook / cancelled cheque",
+        "Proof of house ownership",
+        "Mobile number"
+      ],
+      "steps": [
+        "Register on pmsuryaghar.gov.in with your state, electricity company and consumer number",
+        "Apply for rooftop solar and choose an approved vendor",
+        "After installation and inspection, the subsidy is credited to your bank account"
+      ],
+      "apply_url": "https://pmsuryaghar.gov.in",
+      "deadline": "Open all year",
+      "verified_on": null
+    },
+    {
+      "id": "pm-kusum",
+      "scope": "individual",
+      "category": "farmer",
+      "level": "central",
+      "name": "PM-KUSUM (solar pumps for farmers)",
+      "name_hi": "पीएम-कुसुम (किसानों के लिए सोलर पंप)",
+      "benefit": "Subsidy on solar irrigation pumps (central and state support, farmer pays the balance), plus income from surplus power",
+      "benefit_hi": "सोलर सिंचाई पंप पर सब्सिडी (केंद्र और राज्य की मदद, बाकी किसान देता है) और बची बिजली से आमदनी",
+      "value_type": "in_kind",
+      "frequency": "one_time",
+      "amount": null,
+      "rules": [
+        {
+          "f": "occupation",
+          "op": "eq",
+          "v": "farmer",
+          "label": "You are a farmer"
+        },
+        {
+          "f": "land_acres",
+          "op": "gt",
+          "v": 0,
+          "label": "You own or cultivate agricultural land"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "Land record (khasra / khatauni)",
+        "Bank passbook",
+        "Passport-size photo"
+      ],
+      "steps": [
+        "Check your state's PM-KUSUM nodal agency or the pmkusum.mnre.gov.in portal",
+        "Apply online or at the agriculture / energy department office with your land details",
+        "Pay your share to the approved vendor; the pump is installed and inspected"
+      ],
+      "apply_url": "https://pmkusum.mnre.gov.in",
+      "deadline": "Varies by state (check your state nodal agency)",
+      "verified_on": null
+    },
+    {
+      "id": "pmegp",
+      "scope": "individual",
+      "category": "finance",
+      "level": "central",
+      "name": "PMEGP (subsidised loan to start a business)",
+      "name_hi": "पीएमईजीपी (नया कारोबार शुरू करने के लिए सब्सिडी वाला ऋण)",
+      "benefit": "Bank loan to start a new unit with a government subsidy of 15% to 35% of the project cost",
+      "benefit_hi": "नया उद्यम शुरू करने के लिए बैंक ऋण, जिस पर परियोजना लागत का 15% से 35% तक सरकारी सब्सिडी",
+      "value_type": "credit",
+      "frequency": "one_time",
+      "amount": null,
+      "value_note": "Subsidy depends on category and area: 15-25% general, up to 35% for SC/ST/OBC/women/rural applicants.",
+      "rules": [
+        {
+          "f": "age",
+          "op": "gte",
+          "v": 18,
+          "label": "Age 18 or above"
+        },
+        {
+          "f": "occupation",
+          "op": "in",
+          "v": [
+            "unemployed",
+            "self_employed",
+            "artisan"
+          ],
+          "label": "You are unemployed, self-employed or an artisan"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "Project report",
+        "Caste / special-category certificate (if applicable)",
+        "Educational certificate",
+        "Bank details"
+      ],
+      "steps": [
+        "Apply on the PMEGP e-portal (kviconline.gov.in/pmegpeportal) with your project report",
+        "Attend the interview at the district task force; the application then goes to a bank",
+        "After the loan is sanctioned and the unit starts, the subsidy is credited to the loan account"
+      ],
+      "apply_url": "https://www.kviconline.gov.in/pmegpeportal",
+      "deadline": "Open all year",
+      "verified_on": null
+    },
+    {
+      "id": "post-matric-st",
+      "scope": "individual",
+      "category": "student",
+      "level": "central",
+      "name": "Post Matric Scholarship for ST students",
+      "name_hi": "अनुसूचित जनजाति के छात्रों के लिए पोस्ट मैट्रिक छात्रवृत्ति",
+      "benefit": "Course-fee reimbursement plus a monthly maintenance allowance for ST students after Class 10",
+      "benefit_hi": "10वीं के बाद पढ़ने वाले एसटी छात्रों को कोर्स फीस की वापसी और मासिक भत्ता",
+      "value_type": "cash",
+      "frequency": "yearly",
+      "amount": null,
+      "rules": [
+        {
+          "f": "occupation",
+          "op": "eq",
+          "v": "student",
+          "label": "You are a student after Class 10"
+        },
+        {
+          "f": "category",
+          "op": "eq",
+          "v": "st",
+          "label": "You belong to the ST category"
+        },
+        {
+          "f": "annual_income",
+          "op": "lte",
+          "v": 250000,
+          "label": "Annual family income up to ₹2.5 lakh"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "ST caste certificate",
+        "Income certificate",
+        "Previous marksheet",
+        "Bank passbook",
+        "Admission / fee receipt"
+      ],
+      "steps": [
+        "Register on the National Scholarship Portal (scholarships.gov.in)",
+        "Fill the application and upload documents",
+        "Get it verified by your institute, then by the nodal officer"
+      ],
+      "apply_url": "https://scholarships.gov.in",
+      "deadline": "Usually Sep-Nov each year (check NSP)",
+      "verified_on": null
+    },
+    {
+      "id": "pm-yasasvi",
+      "scope": "individual",
+      "category": "student",
+      "level": "central",
+      "name": "PM YASASVI Post-Matric Scholarship (OBC / EBC / DNT)",
+      "name_hi": "पीएम यशस्वी पोस्ट मैट्रिक छात्रवृत्ति (ओबीसी / ईबीसी / डीएनटी)",
+      "benefit": "Scholarship with academic allowance and fee support for OBC, EBC and DNT students after Class 10",
+      "benefit_hi": "10वीं के बाद पढ़ने वाले ओबीसी, ईबीसी और डीएनटी छात्रों को शैक्षणिक भत्ता और फीस सहायता",
+      "value_type": "cash",
+      "frequency": "yearly",
+      "amount": null,
+      "rules": [
+        {
+          "f": "occupation",
+          "op": "eq",
+          "v": "student",
+          "label": "You are a student after Class 10"
+        },
+        {
+          "f": "category",
+          "op": "eq",
+          "v": "obc",
+          "label": "You belong to the OBC category"
+        },
+        {
+          "f": "annual_income",
+          "op": "lte",
+          "v": 250000,
+          "label": "Annual family income up to ₹2.5 lakh"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "OBC / EBC / DNT certificate",
+        "Income certificate",
+        "Previous marksheet",
+        "Bank passbook",
+        "Admission / fee receipt"
+      ],
+      "steps": [
+        "Register on the National Scholarship Portal (scholarships.gov.in)",
+        "Select PM YASASVI (OBC/EBC/DNT) post-matric and fill the application",
+        "Upload documents and get them verified by your institute"
+      ],
+      "apply_url": "https://scholarships.gov.in",
+      "deadline": "Usually Sep-Nov each year (check NSP)",
+      "verified_on": null
+    },
+    {
+      "id": "aicte-pragati",
+      "scope": "individual",
+      "category": "student",
+      "level": "central",
+      "name": "AICTE Pragati Scholarship (girls in technical education)",
+      "name_hi": "एआईसीटीई प्रगति छात्रवृत्ति (तकनीकी शिक्षा में छात्राएं)",
+      "benefit": "₹50,000 per year for girl students in AICTE-approved degree and diploma courses",
+      "benefit_hi": "एआईसीटीई-मान्यता प्राप्त डिग्री और डिप्लोमा कोर्स में पढ़ने वाली छात्राओं को हर साल ₹50,000",
+      "value_type": "cash",
+      "frequency": "yearly",
+      "amount": 50000,
+      "value_note": "Limited to one girl per family (two if the family has twin girls); the course must be AICTE-approved.",
+      "rules": [
+        {
+          "f": "occupation",
+          "op": "eq",
+          "v": "student",
+          "label": "You are a student"
+        },
+        {
+          "f": "gender",
+          "op": "eq",
+          "v": "female",
+          "label": "Applicant is a girl / woman"
+        },
+        {
+          "f": "annual_income",
+          "op": "lte",
+          "v": 800000,
+          "label": "Annual family income up to ₹8 lakh"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "Income certificate",
+        "Admission letter / fee receipt (AICTE-approved college)",
+        "Bank passbook",
+        "Class 10 / 12 marksheet"
+      ],
+      "steps": [
+        "Register on the National Scholarship Portal (scholarships.gov.in)",
+        "Choose AICTE Pragati and fill in course and college details",
+        "Upload documents; the college verifies and forwards the application"
+      ],
+      "apply_url": "https://scholarships.gov.in",
+      "deadline": "Usually Sep-Nov each year (check NSP)",
+      "verified_on": null
+    },
+    {
+      "id": "jsy",
+      "scope": "individual",
+      "category": "women",
+      "level": "central",
+      "name": "Janani Suraksha Yojana (cash for safe delivery)",
+      "name_hi": "जननी सुरक्षा योजना (सुरक्षित प्रसव के लिए नकद सहायता)",
+      "benefit": "Cash support for delivering in a government or accredited health facility (about ₹1,400 in rural low-performing states)",
+      "benefit_hi": "सरकारी या मान्यता प्राप्त अस्पताल में प्रसव पर नकद सहायता (ग्रामीण क्षेत्रों में लगभग ₹1,400)",
+      "value_type": "cash",
+      "frequency": "one_time",
+      "amount": 1400,
+      "value_note": "Amount varies by state and by rural/urban area (₹600 to ₹1,400); check with your ASHA worker.",
+      "rules": [
+        {
+          "f": "pregnant",
+          "op": "is_true",
+          "label": "You are pregnant"
+        },
+        {
+          "any": [
+            {
+              "f": "bpl",
+              "op": "is_true",
+              "label": "BPL family"
+            },
+            {
+              "f": "category",
+              "op": "in",
+              "v": [
+                "sc",
+                "st"
+              ],
+              "label": "SC or ST"
+            }
+          ],
+          "label": "BPL, SC or ST family"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "JSY / MCP card from the ANM or ASHA",
+        "BPL card or caste certificate",
+        "Bank passbook"
+      ],
+      "steps": [
+        "Register the pregnancy with your ANM / ASHA worker or the nearest health centre",
+        "Deliver in a government or accredited private health facility",
+        "The cash is paid to your bank account after delivery; the ASHA worker helps with the paperwork"
+      ],
+      "apply_url": "https://nhm.gov.in",
+      "deadline": "Open all year",
+      "verified_on": null
+    },
+    {
+      "id": "ddu-gky",
+      "scope": "individual",
+      "category": "worker",
+      "level": "central",
+      "name": "DDU-GKY (free skill training and job placement)",
+      "name_hi": "डीडीयू-जीकेवाई (मुफ़्त कौशल प्रशिक्षण और नौकरी)",
+      "benefit": "Free skill training with placement support for rural youth from poor families",
+      "benefit_hi": "गरीब परिवारों के ग्रामीण युवाओं के लिए मुफ़्त कौशल प्रशिक्षण और नौकरी दिलाने में मदद",
+      "value_type": "in_kind",
+      "frequency": "one_time",
+      "amount": null,
+      "rules": [
+        {
+          "f": "age",
+          "op": "between",
+          "v": [
+            15,
+            35
+          ],
+          "label": "Age between 15 and 35"
+        },
+        {
+          "f": "rural",
+          "op": "is_true",
+          "label": "You live in a rural area"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "Proof of age",
+        "Rural / BPL or SHG-family proof",
+        "Passport-size photo",
+        "Education certificate (if any)"
+      ],
+      "steps": [
+        "Find a DDU-GKY training centre on ddugky.gov.in or ask at your block office / SHG",
+        "Register and complete counselling at the centre",
+        "Finish the course and get placement support"
+      ],
+      "apply_url": "https://ddugky.gov.in",
+      "deadline": "Open all year (batches vary by training centre)",
+      "verified_on": null
+    },
+    {
+      "id": "rvy",
+      "scope": "individual",
+      "category": "senior",
+      "level": "central",
+      "name": "Rashtriya Vayoshri Yojana (free aids for poor seniors)",
+      "name_hi": "राष्ट्रीय वयोश्री योजना (गरीब बुज़ुर्गों के लिए मुफ़्त सहायक उपकरण)",
+      "benefit": "Free walking sticks, wheelchairs, hearing aids, spectacles and dentures for BPL senior citizens with age-related disability",
+      "benefit_hi": "उम्र से जुड़ी कमज़ोरी वाले बीपीएल बुज़ुर्गों को मुफ़्त छड़ी, व्हीलचेयर, श्रवण यंत्र, चश्मा और नकली दांत",
+      "value_type": "in_kind",
+      "frequency": "one_time",
+      "amount": null,
+      "rules": [
+        {
+          "f": "age",
+          "op": "gte",
+          "v": 60,
+          "label": "Age 60 or above"
+        },
+        {
+          "f": "bpl",
+          "op": "is_true",
+          "label": "BPL family"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "BPL card / income proof",
+        "Passport-size photo",
+        "Medical assessment at the camp"
+      ],
+      "steps": [
+        "Watch for an assessment camp near you or contact your district social welfare office",
+        "Get assessed at the camp with your BPL proof",
+        "Collect the aids at the distribution camp"
+      ],
+      "apply_url": "https://alimco.in",
+      "deadline": "Camps held through the year (ask your district office)",
+      "verified_on": null
+    },
+    {
+      "id": "ladli-behna",
+      "scope": "individual",
+      "category": "women",
+      "level": "state",
+      "state": "madhya pradesh",
+      "name": "Mukhyamantri Ladli Behna Yojana (Madhya Pradesh)",
+      "name_hi": "मुख्यमंत्री लाड़ली बहना योजना (मध्य प्रदेश)",
+      "benefit": "₹1,500 per month directly to the bank account of eligible women",
+      "benefit_hi": "पात्र महिलाओं के बैंक खाते में हर महीने सीधे ₹1,500",
+      "value_type": "cash",
+      "frequency": "yearly",
+      "amount": 18000,
+      "value_note": "For married, widowed, divorced and abandoned women. Amount raised to ₹1,500 from Nov 2025; re-check on the state portal.",
+      "rules": [
+        {
+          "f": "state",
+          "op": "eq",
+          "v": "madhya pradesh",
+          "label": "You live in Madhya Pradesh"
+        },
+        {
+          "f": "gender",
+          "op": "eq",
+          "v": "female",
+          "label": "Applicant is a woman"
+        },
+        {
+          "f": "age",
+          "op": "between",
+          "v": [
+            21,
+            60
+          ],
+          "label": "Age between 21 and 60"
+        },
+        {
+          "f": "annual_income",
+          "op": "lte",
+          "v": 250000,
+          "label": "Family income up to ₹2.5 lakh per year"
+        },
+        {
+          "f": "income_tax_payer",
+          "op": "is_false",
+          "label": "No income tax payer in the family"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "Samagra ID",
+        "Bank passbook (Aadhaar-linked, DBT enabled)",
+        "Mobile number",
+        "Passport-size photo"
+      ],
+      "steps": [
+        "Contact your Anganwadi centre, ward / gram panchayat office or the cmladlibahna.mp.gov.in portal",
+        "Submit the form with Samagra ID and bank details",
+        "After verification the money comes to your bank account around the 10th of each month"
+      ],
+      "apply_url": "https://cmladlibahna.mp.gov.in",
+      "deadline": "Check state portal for current status",
+      "verified_on": null,
+      "needs_state_verification": true
+    },
+    {
+      "id": "lado-lakshmi",
+      "scope": "individual",
+      "category": "women",
+      "level": "state",
+      "state": "haryana",
+      "name": "Deen Dayal Lado Lakshmi Yojana (Haryana)",
+      "name_hi": "दीनदयाल लाडो लक्ष्मी योजना (हरियाणा)",
+      "benefit": "₹2,100 per month for eligible women (under the 2026 rules part of the amount goes into a savings deposit)",
+      "benefit_hi": "पात्र महिलाओं को हर महीने ₹2,100 (2026 के नियमों के अनुसार कुछ राशि बचत जमा में जाती है)",
+      "value_type": "cash",
+      "frequency": "yearly",
+      "amount": 25200,
+      "value_note": "Rules were revised in 2026 (compulsory savings component, wider eligibility); confirm the current split on the official app.",
+      "rules": [
+        {
+          "f": "state",
+          "op": "eq",
+          "v": "haryana",
+          "label": "You live in Haryana"
+        },
+        {
+          "f": "gender",
+          "op": "eq",
+          "v": "female",
+          "label": "Applicant is a woman"
+        },
+        {
+          "f": "age",
+          "op": "gte",
+          "v": 23,
+          "label": "Age 23 or above"
+        },
+        {
+          "f": "annual_income",
+          "op": "lte",
+          "v": 100000,
+          "label": "Family income below ₹1 lakh per year"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "Haryana domicile / Parivar Pehchan Patra (PPP)",
+        "Income proof",
+        "Bank passbook (Aadhaar-linked)",
+        "Mobile number"
+      ],
+      "steps": [
+        "Apply through the official Lado Lakshmi mobile app or your nearest Saral / CSC centre",
+        "Enter family ID and bank details and submit",
+        "After approval, complete monthly face authentication to keep receiving payments"
+      ],
+      "apply_url": "https://sewa.haryana.gov.in",
+      "deadline": "Check state portal for current status",
+      "verified_on": null,
+      "needs_state_verification": true
+    },
+    {
+      "id": "subhadra",
+      "scope": "individual",
+      "category": "women",
+      "level": "state",
+      "state": "odisha",
+      "name": "Subhadra Yojana (Odisha)",
+      "name_hi": "सुभद्रा योजना (ओडिशा)",
+      "benefit": "₹10,000 per year in two instalments of ₹5,000 (₹50,000 over five years) to eligible women",
+      "benefit_hi": "पात्र महिलाओं को हर साल ₹10,000, दो किस्तों में ₹5,000-₹5,000 (पांच साल में ₹50,000)",
+      "value_type": "cash",
+      "frequency": "yearly",
+      "amount": 10000,
+      "rules": [
+        {
+          "f": "state",
+          "op": "eq",
+          "v": "odisha",
+          "label": "You live in Odisha"
+        },
+        {
+          "f": "gender",
+          "op": "eq",
+          "v": "female",
+          "label": "Applicant is a woman"
+        },
+        {
+          "f": "age",
+          "op": "between",
+          "v": [
+            21,
+            60
+          ],
+          "label": "Age between 21 and 60"
+        },
+        {
+          "f": "annual_income",
+          "op": "lte",
+          "v": 250000,
+          "label": "Family income up to ₹2.5 lakh per year"
+        },
+        {
+          "f": "income_tax_payer",
+          "op": "is_false",
+          "label": "No income tax payer in the family"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "Odisha domicile / ration card (NFSA or SFSS)",
+        "Aadhaar-linked bank account",
+        "Mobile number"
+      ],
+      "steps": [
+        "Apply at your Mo Seba Kendra / Jana Seva Kendra or on the Subhadra portal",
+        "Submit Aadhaar, ration card and bank details",
+        "Instalments of ₹5,000 are credited in two rounds each year (around Raksha Bandhan and Women's Day)"
+      ],
+      "apply_url": "https://subhadra.odisha.gov.in",
+      "deadline": "Check state portal for current status",
+      "verified_on": null,
+      "needs_state_verification": true
+    },
+    {
+      "id": "mmry-bihar",
+      "scope": "individual",
+      "category": "women",
+      "level": "state",
+      "state": "bihar",
+      "name": "Mukhyamantri Mahila Rojgar Yojana (Bihar)",
+      "name_hi": "मुख्यमंत्री महिला रोज़गार योजना (बिहार)",
+      "benefit": "₹10,000 seed money to start a small business, with up to ₹2 lakh more later for those who use it well",
+      "benefit_hi": "छोटा कारोबार शुरू करने के लिए ₹10,000 की शुरुआती मदद, अच्छे उपयोग पर आगे ₹2 लाख तक की सहायता",
+      "value_type": "cash",
+      "frequency": "one_time",
+      "amount": 10000,
+      "value_note": "Launched Sept 2025; one woman per family. Check whether new enrolment is open before applying.",
+      "rules": [
+        {
+          "f": "state",
+          "op": "eq",
+          "v": "bihar",
+          "label": "You live in Bihar"
+        },
+        {
+          "f": "gender",
+          "op": "eq",
+          "v": "female",
+          "label": "Applicant is a woman"
+        },
+        {
+          "f": "age",
+          "op": "between",
+          "v": [
+            18,
+            60
+          ],
+          "label": "Age between 18 and 60"
+        },
+        {
+          "f": "income_tax_payer",
+          "op": "is_false",
+          "label": "No income tax payer in the family"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "Bihar domicile proof",
+        "Bank passbook",
+        "JEEViKA self help group membership details",
+        "Mobile number"
+      ],
+      "steps": [
+        "Join or contact your local JEEViKA self help group (Jeevika Didi) or the block office",
+        "Apply on the MMRY portal with your Aadhaar and bank details",
+        "The ₹10,000 is paid by DBT; follow the block office guidance for the next-stage support"
+      ],
+      "apply_url": "https://mmryurban.brlps.in/MMRYRural/Login.aspx",
+      "deadline": "Enrolment phases vary - check with JEEViKA / block office",
+      "verified_on": null,
+      "needs_state_verification": true
+    },
+    {
+      "id": "delhi-lakshmi",
+      "scope": "individual",
+      "category": "women",
+      "level": "state",
+      "state": "delhi",
+      "name": "Delhi Lakshmi Yojana (Delhi)",
+      "name_hi": "दिल्ली लक्ष्मी योजना (दिल्ली)",
+      "benefit": "₹2,500 per month for eligible women from lower-income households (part of it is reported to go into a savings deposit)",
+      "benefit_hi": "कम आय वाले परिवारों की पात्र महिलाओं को हर महीने ₹2,500 (रिपोर्ट के अनुसार इसका कुछ हिस्सा बचत जमा में जाता है)",
+      "value_type": "cash",
+      "frequency": "yearly",
+      "amount": 30000,
+      "value_note": "Launched 26 Aug 2026 (earlier called Mahila Samriddhi Yojana). Reports say only part of the ₹2,500 is paid in cash; confirm the split.",
+      "rules": [
+        {
+          "f": "state",
+          "op": "eq",
+          "v": "delhi",
+          "label": "You live in Delhi"
+        },
+        {
+          "f": "gender",
+          "op": "eq",
+          "v": "female",
+          "label": "Applicant is a woman"
+        },
+        {
+          "f": "age",
+          "op": "between",
+          "v": [
+            21,
+            60
+          ],
+          "label": "Age between 21 and 60"
+        },
+        {
+          "f": "annual_income",
+          "op": "lte",
+          "v": 250000,
+          "label": "Family income up to ₹2.5 lakh per year"
+        },
+        {
+          "f": "income_tax_payer",
+          "op": "is_false",
+          "label": "No income tax payer in the family"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "Delhi residence proof",
+        "Income proof / certificate",
+        "Bank passbook (Aadhaar-linked)",
+        "Mobile number"
+      ],
+      "steps": [
+        "Register on the Delhi government's Women & Child Development portal or at a registration camp",
+        "Fill in identity, residence and family-income details",
+        "Track approval and payment on the portal"
+      ],
+      "apply_url": "https://wcd.delhi.gov.in",
+      "deadline": "Check state portal for current status",
+      "verified_on": null,
+      "needs_state_verification": true
+    },
+    {
+      "id": "jharkhand-maiyan-samman",
+      "scope": "individual",
+      "category": "women",
+      "level": "state",
+      "state": "jharkhand",
+      "name": "Mukhyamantri Maiyan Samman Yojana (Jharkhand)",
+      "name_hi": "मुख्यमंत्री मईयां सम्मान योजना (झारखंड)",
+      "benefit": "₹2,500 per month to eligible women",
+      "benefit_hi": "पात्र महिलाओं को हर महीने ₹2,500",
+      "value_type": "cash",
+      "frequency": "yearly",
+      "amount": 30000,
+      "value_note": "Sources disagree on the exact age floor (18 vs 21) and family-income ceiling; the state portal is the final word.",
+      "rules": [
+        {
+          "f": "state",
+          "op": "eq",
+          "v": "jharkhand",
+          "label": "You live in Jharkhand"
+        },
+        {
+          "f": "gender",
+          "op": "eq",
+          "v": "female",
+          "label": "Applicant is a woman"
+        },
+        {
+          "f": "age",
+          "op": "between",
+          "v": [
+            18,
+            50
+          ],
+          "label": "Age between 18 and 50"
+        },
+        {
+          "f": "income_tax_payer",
+          "op": "is_false",
+          "label": "No income tax payer in the family"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "Ration card with your name",
+        "Aadhaar-linked bank account",
+        "Jharkhand domicile / residence proof"
+      ],
+      "steps": [
+        "Register at the camp, block office or the mmmsy.jharkhand.gov.in portal",
+        "Submit Aadhaar, ration card and bank details",
+        "Keep your bank account Aadhaar-linked to receive the monthly transfer"
+      ],
+      "apply_url": "https://mmmsy.jharkhand.gov.in",
+      "deadline": "Check state portal for current status",
+      "verified_on": null,
+      "needs_state_verification": true
+    },
+    {
+      "id": "mahtari-vandan",
+      "scope": "individual",
+      "category": "women",
+      "level": "state",
+      "state": "chhattisgarh",
+      "name": "Mahtari Vandan Yojana (Chhattisgarh)",
+      "name_hi": "महतारी वंदन योजना (छत्तीसगढ़)",
+      "benefit": "₹1,000 per month to eligible married, widowed, divorced and abandoned women",
+      "benefit_hi": "पात्र विवाहित, विधवा, तलाकशुदा और परित्यक्ता महिलाओं को हर महीने ₹1,000",
+      "value_type": "cash",
+      "frequency": "yearly",
+      "amount": 12000,
+      "value_note": "For married, widowed, divorced and abandoned women; those in government service or paying income tax are excluded.",
+      "rules": [
+        {
+          "f": "state",
+          "op": "eq",
+          "v": "chhattisgarh",
+          "label": "You live in Chhattisgarh"
+        },
+        {
+          "f": "gender",
+          "op": "eq",
+          "v": "female",
+          "label": "Applicant is a woman"
+        },
+        {
+          "f": "age",
+          "op": "gte",
+          "v": 21,
+          "label": "Age 21 or above"
+        },
+        {
+          "f": "income_tax_payer",
+          "op": "is_false",
+          "label": "No income tax payer in the family"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "Chhattisgarh residence proof / ration card",
+        "Bank passbook",
+        "Age proof",
+        "Self-declaration (if asked)"
+      ],
+      "steps": [
+        "Apply at your Anganwadi centre, ward / gram panchayat office or mahtarivandan.cgstate.gov.in",
+        "Submit the form with Aadhaar and bank details",
+        "The monthly amount is credited by DBT after approval"
+      ],
+      "apply_url": "https://mahtarivandan.cgstate.gov.in",
+      "deadline": "Check state portal for current status",
+      "verified_on": null,
+      "needs_state_verification": true
+    },
+    {
+      "id": "orunodoi",
+      "scope": "individual",
+      "category": "women",
+      "level": "state",
+      "state": "assam",
+      "name": "Orunodoi 3.0 (Assam)",
+      "name_hi": "अरुणोदोई 3.0 (असम)",
+      "benefit": "₹1,250 per month to the woman of an eligible low-income family (additional LPG support has been announced)",
+      "benefit_hi": "कम आय वाले पात्र परिवार की महिला को हर महीने ₹1,250 (एलपीजी के लिए अतिरिक्त मदद की घोषणा भी हुई है)",
+      "value_type": "cash",
+      "frequency": "yearly",
+      "amount": 15000,
+      "value_note": "One woman per family. The state announced no income certificate is needed; exact income ceiling differs across sources.",
+      "rules": [
+        {
+          "f": "state",
+          "op": "eq",
+          "v": "assam",
+          "label": "You live in Assam"
+        },
+        {
+          "f": "gender",
+          "op": "eq",
+          "v": "female",
+          "label": "Applicant is a woman"
+        },
+        {
+          "f": "income_tax_payer",
+          "op": "is_false",
+          "label": "No income tax payer / government employee in the family"
+        }
+      ],
+      "documents": [
+        "Aadhaar-seeded ration card",
+        "Aadhaar card",
+        "Bank passbook",
+        "Self-declaration (no income certificate needed)"
+      ],
+      "steps": [
+        "Beneficiaries are enrolled through your gram panchayat / ward or ULB; ask the local office for the enrolment drive",
+        "Fill the form with ration card and bank details",
+        "Money arrives in the woman's bank account on the 1st of each month"
+      ],
+      "apply_url": "https://orunodoi.assam.gov.in",
+      "deadline": "Check state portal for current status",
+      "verified_on": null,
+      "needs_state_verification": true
+    },
+    {
+      "id": "rajasthan-rasoi-gas",
+      "scope": "household",
+      "category": "food",
+      "level": "state",
+      "state": "rajasthan",
+      "name": "Rajasthan Rasoi Gas Cylinder Subsidy Yojana",
+      "name_hi": "राजस्थान रसोई गैस सिलेंडर सब्सिडी योजना",
+      "benefit": "LPG cylinder at ₹450 for eligible families (one per month, subsidy paid by DBT)",
+      "benefit_hi": "पात्र परिवारों को ₹450 में एलपीजी सिलेंडर (हर महीने एक, सब्सिडी डीबीटी से)",
+      "value_type": "in_kind",
+      "frequency": "monthly",
+      "amount": null,
+      "value_note": "Covers PM Ujjwala families, BPL families and NFSA families; the site check here uses BPL as a proxy.",
+      "rules": [
+        {
+          "f": "state",
+          "op": "eq",
+          "v": "rajasthan",
+          "label": "You live in Rajasthan"
+        },
+        {
+          "f": "bpl",
+          "op": "is_true",
+          "label": "BPL / NFSA family (BPL status used as the check)"
+        },
+        {
+          "f": "has_lpg",
+          "op": "is_true",
+          "label": "Your home has an LPG connection"
+        }
+      ],
+      "documents": [
+        "Jan Aadhaar card",
+        "LPG consumer number",
+        "Aadhaar-linked bank account",
+        "Ration card (NFSA / BPL) or Ujjwala proof"
+      ],
+      "steps": [
+        "Make sure your LPG ID is mapped with Jan Aadhaar (ask your gas agency)",
+        "Register if asked (many families are enrolled automatically)",
+        "Pay the market price when you book; the subsidy is returned to your bank account"
+      ],
+      "apply_url": "https://rajasthan.gov.in",
+      "deadline": "Check state portal for current status",
+      "verified_on": null,
+      "needs_state_verification": true
+    },
+    {
+      "id": "karnataka-gruha-jyothi",
+      "scope": "household",
+      "category": "housing",
+      "level": "state",
+      "state": "karnataka",
+      "name": "Gruha Jyothi - free electricity (Karnataka)",
+      "name_hi": "गृह ज्योति - मुफ़्त बिजली (कर्नाटक)",
+      "benefit": "Free electricity up to 200 units a month for household consumers (zero bill)",
+      "benefit_hi": "घरेलू उपभोक्ताओं को हर महीने 200 यूनिट तक मुफ़्त बिजली (ज़ीरो बिल)",
+      "value_type": "in_kind",
+      "frequency": "monthly",
+      "amount": null,
+      "value_note": "The state has said it will review beneficiaries via a house-to-house survey; check current rules.",
+      "rules": [
+        {
+          "f": "state",
+          "op": "eq",
+          "v": "karnataka",
+          "label": "You live in Karnataka"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "Electricity account (RR) number",
+        "Proof of residence / rent agreement (if a tenant)"
+      ],
+      "steps": [
+        "Register on Seva Sindhu or at a Grama One / Bangalore One centre with your electricity account number",
+        "Link Aadhaar to your connection if asked",
+        "The zero bill is applied automatically each month"
+      ],
+      "apply_url": "https://sevasindhu.karnataka.gov.in",
+      "deadline": "Check state portal for current status",
+      "verified_on": null,
+      "needs_state_verification": true
+    },
+    {
+      "id": "karnataka-shakti",
+      "scope": "individual",
+      "category": "women",
+      "level": "state",
+      "state": "karnataka",
+      "name": "Shakti - free bus travel for women (Karnataka)",
+      "name_hi": "शक्ति - महिलाओं के लिए मुफ़्त बस यात्रा (कर्नाटक)",
+      "benefit": "Free travel on regular state-run buses (KSRTC, BMTC, NWKRTC, KKRTC) for women who live in Karnataka",
+      "benefit_hi": "कर्नाटक की महिलाओं के लिए सरकारी साधारण बसों (केएसआरटीसी, बीएमटीसी आदि) में मुफ़्त यात्रा",
+      "value_type": "in_kind",
+      "frequency": "yearly",
+      "amount": null,
+      "value_note": "The state is moving to smart-card passes for Karnataka residents; check what is required on the day you travel.",
+      "rules": [
+        {
+          "f": "state",
+          "op": "eq",
+          "v": "karnataka",
+          "label": "You live in Karnataka"
+        },
+        {
+          "f": "gender",
+          "op": "eq",
+          "v": "female",
+          "label": "Applicant is a woman"
+        }
+      ],
+      "documents": [
+        "Aadhaar card or any government ID showing Karnataka residence",
+        "Shakti smart card (where issued)"
+      ],
+      "steps": [
+        "Get the Shakti smart card from Seva Sindhu (where the state is issuing passes)",
+        "Show your ID or card to the conductor and collect a zero-fare ticket",
+        "Not valid on luxury, AC or inter-state buses"
+      ],
+      "apply_url": "https://sevasindhu.karnataka.gov.in",
+      "deadline": "Check state portal for current status",
+      "verified_on": null,
+      "needs_state_verification": true
+    },
+    {
+      "id": "karnataka-yuva-nidhi",
+      "scope": "individual",
+      "category": "worker",
+      "level": "state",
+      "state": "karnataka",
+      "name": "Yuva Nidhi - unemployment allowance (Karnataka)",
+      "name_hi": "युवा निधि - बेरोज़गारी भत्ता (कर्नाटक)",
+      "benefit": "₹3,000 per month for unemployed graduates and ₹1,500 for diploma holders, for up to 2 years",
+      "benefit_hi": "बेरोज़गार स्नातकों को ₹3,000 और डिप्लोमा धारकों को ₹1,500 प्रति माह, अधिकतम 2 साल",
+      "value_type": "cash",
+      "frequency": "yearly",
+      "amount": null,
+      "value_note": "Meant for recent graduates and diploma holders who have not found a job within 6 months. Amount depends on the qualification.",
+      "rules": [
+        {
+          "f": "state",
+          "op": "eq",
+          "v": "karnataka",
+          "label": "You live in Karnataka"
+        },
+        {
+          "f": "occupation",
+          "op": "eq",
+          "v": "unemployed",
+          "label": "You are unemployed"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "Degree / diploma certificate",
+        "Karnataka residence proof (6 years of study or residence)",
+        "Bank passbook",
+        "Self-declaration that you are unemployed"
+      ],
+      "steps": [
+        "Apply on Seva Sindhu after completing your degree or diploma",
+        "Upload certificates and bank details",
+        "Declare each month that you are still unemployed to keep receiving the allowance"
+      ],
+      "apply_url": "https://sevasindhu.karnataka.gov.in",
+      "deadline": "Check state portal for current status",
+      "verified_on": null,
+      "needs_state_verification": true
+    },
+    {
+      "id": "annadata-sukhibhava",
+      "scope": "individual",
+      "category": "farmer",
+      "level": "state",
+      "state": "andhra pradesh",
+      "name": "Annadata Sukhibhava - PM Kisan (Andhra Pradesh)",
+      "name_hi": "अन्नदाता सुखीभव - पीएम किसान (आंध्र प्रदेश)",
+      "benefit": "₹20,000 per year for eligible farmers in 3 instalments: ₹14,000 from the state plus ₹6,000 PM-KISAN",
+      "benefit_hi": "पात्र किसानों को हर साल ₹20,000, तीन किस्तों में: राज्य के ₹14,000 और पीएम-किसान के ₹6,000",
+      "value_type": "cash",
+      "frequency": "yearly",
+      "amount": 14000,
+      "value_note": "₹14,000 is the state's top-up; the ₹6,000 PM-KISAN part is already counted under PM-KISAN, so it is not added again here.",
+      "rules": [
+        {
+          "f": "state",
+          "op": "eq",
+          "v": "andhra pradesh",
+          "label": "You live in Andhra Pradesh"
+        },
+        {
+          "f": "occupation",
+          "op": "eq",
+          "v": "farmer",
+          "label": "You are a farmer"
+        },
+        {
+          "f": "income_tax_payer",
+          "op": "is_false",
+          "label": "No income tax payer in the family"
+        }
+      ],
+      "documents": [
+        "Aadhaar card",
+        "Land passbook / tenant (CCRC) card",
+        "Aadhaar-linked bank passbook",
+        "Mobile number"
+      ],
+      "steps": [
+        "Register or verify your name at your Rythu Seva Kendra (RSK)",
+        "Complete eKYC and make sure your land and bank details are correct",
+        "Instalments of ₹7,000, ₹7,000 and ₹6,000 are credited through the year"
+      ],
+      "apply_url": "https://apagrisnet.gov.in",
+      "deadline": "Check state portal for current status",
+      "verified_on": null,
+      "needs_state_verification": true
+    },
+    {
+      "id": "kanya-sumangala",
+      "scope": "individual",
+      "category": "women",
+      "level": "state",
+      "state": "uttar pradesh",
+      "name": "Mukhyamantri Kanya Sumangala Yojana (Uttar Pradesh)",
+      "name_hi": "मुख्यमंत्री कन्या सुमंगला योजना (उत्तर प्रदेश)",
+      "benefit": "₹25,000 in six stages for a girl child, from birth through graduation",
+      "benefit_hi": "बेटी के जन्म से लेकर स्नातक तक छह चरणों में कुल ₹25,000",
+      "value_type": "cash",
+      "frequency": "one_time",
+      "amount": 25000,
+      "value_note": "Applies to girls born on or after 1 April 2019; up to two girls per family (twins count as one birth). The 'daughter under 10' answer is only an approximation.",
+      "rules": [
+        {
+          "f": "state",
+          "op": "eq",
+          "v": "uttar pradesh",
+          "label": "You live in Uttar Pradesh"
+        },
+        {
+          "f": "girl_child_under10",
+          "op": "is_true",
+          "label": "You have a daughter born on or after 1 April 2019"
+        },
+        {
+          "f": "annual_income",
+          "op": "lte",
+          "v": 300000,
+          "label": "Family income up to ₹3 lakh per year"
+        }
+      ],
+      "documents": [
+        "Aadhaar card of mother / father and the girl",
+        "Girl's birth certificate",
+        "Income certificate",
+        "Residence proof",
+        "Bank passbook of the mother"
+      ],
+      "steps": [
+        "Register on the Kanya Sumangala portal (mksy.up.gov.in) for the stage your daughter is at",
+        "Upload documents and submit",
+        "Money for each stage (birth, vaccination, Class 1, 6, 9 and 12/graduation) is paid by DBT"
+      ],
+      "apply_url": "https://mksy.up.gov.in",
+      "deadline": "Check state portal for current status",
+      "verified_on": null,
+      "needs_state_verification": true
+    },
+    {
+      "id": "lek-ladki",
+      "scope": "individual",
+      "category": "women",
+      "level": "state",
+      "state": "maharashtra",
+      "name": "Lek Ladki Yojana (Maharashtra)",
+      "name_hi": "लेक लाडकी योजना (महाराष्ट्र)",
+      "benefit": "₹1,01,000 in stages for a girl child, from birth to age 18",
+      "benefit_hi": "बेटी के जन्म से 18 वर्ष की उम्र तक चरणों में कुल ₹1,01,000",
+      "value_type": "cash",
+      "frequency": "one_time",
+      "amount": 101000,
+      "value_note": "For girls born on or after 1 April 2023. The 'daughter under 10' answer is only an approximation of the birth-date rule.",
+      "rules": [
+        {
+          "f": "state",
+          "op": "eq",
+          "v": "maharashtra",
+          "label": "You live in Maharashtra"
+        },
+        {
+          "f": "girl_child_under10",
+          "op": "is_true",
+          "label": "You have a daughter born on or after 1 April 2023"
+        },
+        {
+          "f": "annual_income",
+          "op": "lte",
+          "v": 100000,
+          "label": "Family income up to ₹1 lakh per year (yellow / orange ration card)"
+        }
+      ],
+      "documents": [
+        "Girl's birth certificate",
+        "Yellow or orange ration card",
+        "Income certificate",
+        "Aadhaar card of parents",
+        "Bank account details"
+      ],
+      "steps": [
+        "Apply through your Anganwadi centre or the state WCD portal for the stage your daughter is at",
+        "Submit documents (birth certificate, ration card, income proof)",
+        "Payments are made at birth, Class 1, Class 6, Class 11 and at 18"
+      ],
+      "apply_url": "https://wcd.maharashtra.gov.in",
+      "deadline": "Check state portal for current status",
+      "verified_on": null,
+      "needs_state_verification": true
     }
   ]
 }

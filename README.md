@@ -10,7 +10,7 @@ Voice/text → profile → deterministic eligibility engine → ranked schemes �
     cd ../backend
     pip install -r requirements-dev.txt
     uvicorn app.main:app --reload                    # open http://localhost:8000
-    pytest -q                                        # 24 tests
+    pytest -q                                        # 27 tests
 
 Deployment (Docker + GitHub Actions CI/CD to an instance): see [deploy/README.md](deploy/README.md).
 
@@ -19,7 +19,7 @@ hot-reload on http://localhost:5173, with /api proxied to :8000.
 
 ## Layout
     backend/
-      app/data/schemes.json  28 schemes (26 central + 2 state), structured rules, documents, steps, official links
+      app/data/schemes.json  54 schemes (37 central + 17 state across 13 states / UTs), structured rules, documents, steps, official links
       app/engine.py          rule engine: pass/fail/unknown, near-miss, follow-up questions, family bundle
       app/parser.py          English / Hindi / Hinglish text → profile (offline, rule-based)
       app/scam.py            Scam Shield: link + message risk check
@@ -43,4 +43,4 @@ hot-reload on http://localhost:5173, with /api proxied to :8000.
 ## Data caveat (important)
 Rules and amounts are simplified from public guidelines and `verified_on` is null everywhere.
 Before the demo, re-check each scheme against its official page and fill in `verified_on`.
-The two state schemes are flagged `needs_state_verification`.
+All state schemes are flagged `needs_state_verification`. Several 2026 state schemes were changing while this was written (Delhi Lakshmi, West Bengal's Annapurna, Karnataka's Gruha Jyothi / Shakti reviews, Haryana's Lado Lakshmi rule changes), so re-check those first.
