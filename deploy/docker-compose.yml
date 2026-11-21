@@ -1,0 +1,31 @@
+# Runs on the instance. CI copies this file + Caddyfile to ~/schemesaathi and runs
+#   IMAGE=ghcr.io/<owner>/schemesaathi:<sha> docker compose up -d
+services:
+  app:
+    image: ${IMAGE:-ghcr.io/rohiitsinghal/schemesaathi:latest}
+    restart: unless-stopped
+    env_file:
+      - path: .env          # secrets live here on the server (e.g. DATABASE_URL), never in git
+        required: false
+    expose:
+      - "8000"
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      DOMAIN: ${DOMAIN:-}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

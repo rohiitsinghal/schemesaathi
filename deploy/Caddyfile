@@ -1,0 +1,6 @@
+# With DOMAIN set (e.g. schemesaathi.in), Caddy gets and renews an HTTPS certificate automatically.
+# Without it, it serves plain HTTP on :80 (fine for a first test, but voice input needs HTTPS).
+{$DOMAIN::80} {
+	encode zstd gzip
+	reverse_proxy app:8000
+}

@@ -3,17 +3,35 @@
 Voice/text → profile → deterministic eligibility engine → ranked schemes → documents + apply steps.
 
 ## Run
-    pip install fastapi uvicorn pytest httpx
-    uvicorn app.main:app --reload        # open http://localhost:8000
-    pytest -q                            # 24 tests
+    # 1. build the UI (React + Tailwind CSS v4, Vite)
+    cd frontend && npm install && npm run build      # → frontend/dist
+
+    # 2. start the API, which also serves frontend/dist at /
+    cd ../backend
+    pip install -r requirements-dev.txt
+    uvicorn app.main:app --reload                    # open http://localhost:8000
+    pytest -q                                        # 24 tests
+
+Deployment (Docker + GitHub Actions CI/CD to an instance): see [deploy/README.md](deploy/README.md).
+
+While working on the UI, run `npm run dev` in `frontend/` alongside uvicorn:
+hot-reload on http://localhost:5173, with /api proxied to :8000.
 
 ## Layout
-- app/data/schemes.json  28 schemes (26 central + 2 state), structured rules, documents, steps, official links
-- app/engine.py          rule engine: pass/fail/unknown, near-miss, follow-up questions, family bundle
-- app/parser.py          English / Hindi / Hinglish text → profile (offline, rule-based)
-- app/scam.py            Scam Shield: link + message risk check
-- app/main.py            FastAPI endpoints (/api/parse, /match, /family, /scam, /schemes)
-- static/                PWA UI (voice in/out, EN/हिन्दी, Find / Family / Scam Shield)
+    backend/
+      app/data/schemes.json  28 schemes (26 central + 2 state), structured rules, documents, steps, official links
+      app/engine.py          rule engine: pass/fail/unknown, near-miss, follow-up questions, family bundle
+      app/parser.py          English / Hindi / Hinglish text → profile (offline, rule-based)
+      app/scam.py            Scam Shield: link + message risk check
+      app/main.py            FastAPI endpoints (/api/parse, /match, /family, /scam, /schemes) + serves the UI
+      tests/                 engine / parser / scam tests
+      requirements.txt
+    frontend/
+      src/                   React PWA UI (voice in/out, EN/हिन्दी, Find / Family / Scam Shield)
+        i18n.js              all English / Hindi strings
+        components/          FindTab, FamilyTab, ScamTab, SchemeCard, Banner, Followup, ui (buttons, inputs)
+      public/                manifest, icon, service worker (copied into the build)
+      dist/                  build output (git-ignored)
 
 ## Design choices worth saying in the pitch
 1. The LLM never decides eligibility. Rules are explicit data, so every answer is explainable and testable.

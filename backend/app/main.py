@@ -10,7 +10,8 @@ from pydantic import BaseModel, Field
 
 from . import engine, parser, scam
 
-ROOT = Path(__file__).resolve().parents[1]
+# Built React UI (cd frontend && npm run build). Served at "/" when present.
+FRONTEND_DIST = Path(__file__).resolve().parents[2] / "frontend" / "dist"
 app = FastAPI(title="SchemeSaathi", version="0.1.0")
 
 
@@ -68,4 +69,9 @@ def fields():
     return engine.FIELDS
 
 
-app.mount("/", StaticFiles(directory=ROOT / "static", html=True), name="static")
+if FRONTEND_DIST.is_dir():
+    app.mount("/", StaticFiles(directory=FRONTEND_DIST, html=True), name="frontend")
+else:
+    @app.get("/")
+    def no_frontend():
+        return {"message": "API is running. Build the UI with: cd frontend && npm install && npm run build"}
